@@ -1,0 +1,16 @@
+[Unit]
+Description=Odoo8
+Requires=postgresql.service
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+SyslogIdentifier=odoo8
+PermissionsStartOnly=true
+User=odoo8
+Group=odoo8
+ExecStart=/opt/odoo8/odoo8-venv/bin/python /opt/odoo8/odoo-8.0/openerp-server -c /etc/odoo8.conf
+StandardOutput=journal+console
+
+[Install]
+WantedBy=multi-user.target

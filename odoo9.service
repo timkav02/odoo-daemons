@@ -1,0 +1,16 @@
+[Unit]
+Description=Odoo9
+Requires=postgresql.service
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+SyslogIdentifier=odoo9
+PermissionsStartOnly=true
+User=odoo9
+Group=odoo9
+ExecStart=/opt/odoo9/odoo9-venv/bin/python /opt/odoo9/odoo-9.0/openerp-server -c /etc/odoo9.conf
+StandardOutput=journal+console
+
+[Install]
+WantedBy=multi-user.target
